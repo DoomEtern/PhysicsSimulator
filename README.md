@@ -20,10 +20,15 @@ Testing robustness under sensor faults, actuator failures, and environmental dis
 **Project Stages**
 Stage	Key Features
 Stage 1:	Basic rigid-body quadrotor physics with translational/rotational dynamics. (Theoretical)
+
 Stage 2:	Motor model with first-order lag, saturation, and simple thrust allocation. (Theoretical)
+
 Stage 3:	Observer-in-the-loop: EKF-based position, velocity, and orientation estimation with noise.
+
 Stage 4:	Monte Carlo falsification atlas for state estimation and trajectory verification.
+
 Stage 5:	Certified geometric SE(3) control, Right-Invariant EKF, energy-based flight certification, and GPS failure analysis.
+
 Stage 6:	NASA-grade fault-tolerant mission manager with adversarial scenario simulation, motor faults, GPS jamming, wind disturbances, and structured safety envelopes.
 
 **Core Components**
