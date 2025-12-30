@@ -7,6 +7,9 @@ from scipy.linalg import expm, block_diag, inv
 from collections import deque
 import warnings
 
+# ==============================================================================
+# SECTION 0: DEPENDENCY HANDLING (FIXED)
+# ==============================================================================
 # Try importing Stable Baselines 3 (RL Library)
 try:
     from stable_baselines3 import PPO
@@ -16,6 +19,10 @@ try:
 except ImportError:
     SB3_AVAILABLE = False
     warnings.warn("Stable Baselines3 not installed. RL Training will be skipped, running PID baseline instead.")
+    
+    # FIX: Define a dummy BaseCallback so the class definition below doesn't crash
+    class BaseCallback:
+        def __init__(self, verbose=0): pass
 
 # ==============================================================================
 # SECTION 1: MANIFOLD MATHEMATICS UTILITIES
@@ -510,6 +517,8 @@ def plot_comprehensive_results(logs):
     plt.tight_layout()
     plt.show()
 
+# FIX: Class definition for CurriculumCallback must inherit from BaseCallback
+# If SB3 is absent, BaseCallback is defined as a dummy in Section 0
 class CurriculumCallback(BaseCallback):
     """
     Custom callback for updating curriculum difficulty during training.
