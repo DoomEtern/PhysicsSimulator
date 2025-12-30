@@ -12,21 +12,15 @@ import time
 class QuadStateEstimator:
     def __init__(self, time_step):
         self.dt = time_step
-        
-        # State vector: [x, y, z, vx, vy, vz, qw, qx, qy, qz]
-        # Represents position, velocity, and orientation (quaternion)
         self.state_vector = np.zeros(10)
         self.state_vector[6] = 1.0 # Initialize quaternion to identity (no rotation)
-        
-        # Covariance Matrix (P) - Represents uncertainty in the state estimate
         self.P = np.eye(10) * 0.1
         
-        # Process Noise Covariance (Q) - Represents uncertainty in the system model
-        # Increased values allow the filter to trust measurements (GPS) more readily
+        # Process Noise Covariance (Q)
         self.Q = np.diag([
-            0.5, 0.5, 0.5,       # Position uncertainty
-            1.0, 1.0, 1.0,       # Velocity uncertainty
-            0.05, 0.05, 0.05, 0.05 # Orientation uncertainty
+            0.5, 0.5, 0.5,       # Position
+            1.0, 1.0, 1.0,       # Velocity
+            0.05, 0.05, 0.05, 0.05 # Orientation
         ]) * time_step
         
         # Measurement Noise Covariance (R) - Represents uncertainty in GPS readings
