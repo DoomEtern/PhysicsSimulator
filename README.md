@@ -83,3 +83,6 @@ Wind shear disturbances
 Combined “perfect storm” conditions
 
 Provides trajectory, error, and safety margin logs for system certification.
+
+DOCUMENTATION OF FORMULAE:
+[Physics_SimulatorR.pdf](https://github.com/user-attachments/files/24439417/Physics_SimulatorR.pdf)
